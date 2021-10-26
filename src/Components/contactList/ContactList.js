@@ -1,11 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import {useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getPhonebook } from "../../Redux/phonebook/phonebook-operations";
 import { getFilterList } from "../../Redux/phonebook/phonebook-selectors";
 import ContactItem from "./ContactItem";
 import s from "./ContactList.module.css";
 
 const ContactsList = () => {
   const filterList = useSelector(getFilterList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPhonebook());
+  }, [dispatch]);
 
   return (
     <>

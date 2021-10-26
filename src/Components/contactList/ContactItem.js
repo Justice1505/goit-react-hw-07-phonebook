@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromPhonebook } from "../../Redux/phonebook/phonebook-actions";
+import { removeFromPhonebook } from "../../Redux/phonebook/phonebook-operations";
 import s from "./ContactList.module.css";
 
 const ContactItem = ({ name, number, id }) => {

@@ -4,10 +4,11 @@ import { useState } from "react";
 import s from "./ContactForm.module.css";
 import FormData from "../Phonebook/formData";
 import { useSelector, useDispatch } from "react-redux";
-import { addToPhonebook } from "../../Redux/phonebook/phonebook-actions";
+import { addToPhonebook } from "../../Redux/phonebook/phonebook-operations";
+import { getContacts } from "../../Redux/phonebook/phonebook-selectors";
 
 const ContactForm = () => {
-  const contacts = useSelector((store) => store.items);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
