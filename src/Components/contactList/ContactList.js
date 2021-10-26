@@ -1,36 +1,21 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeContact } from '../../Redux/phonebook/phonebook-operations';
-import s from './ContactList.module.css';
-import { getVisibleContacts } from '../../Redux/phonebook/phonebook-selectors';
+import React from "react";
+import { useSelector } from "react-redux";
+import { getFilterList } from "../../Redux/phonebook/phonebook-selectors";
+import ContactItem from "./ContactItem";
+import s from "./ContactList.module.css";
 
-const ContactList = () => {
-  const dispatch = useDispatch();
-
-  const findContact = useSelector(getVisibleContacts);
+const ContactsList = () => {
+  const filterList = useSelector(getFilterList);
 
   return (
-    <ul>
-      {findContact &&
-        findContact.map(contact => {
-          return (
-            <li className={s.item} key={contact.id}>
-              <span className={s.span}>{contact.name}:</span>
-              &nbsp;
-              <span className={s.span}>{contact.number}</span>
-              <button
-                className={s.btn}
-                type="button"
-                id={contact.id}
-                onClick={() => dispatch(removeContact(contact.id))}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
-    </ul>
+    <>
+      <ul className={s.list}>
+        {filterList.map(({ name, number, id }) => (
+          <ContactItem key={id} name={name} number={number} id={id} />
+        ))}
+      </ul>
+    </>
   );
 };
 
-export default ContactList;
+export default ContactsList;

@@ -16,6 +16,9 @@
   border: tomato solid 1px;
 }
 .item {
+  align-items: center;
+  display: flex;
+  flex-direction: row ;
   margin-bottom: 10px;
 }
 .span {
